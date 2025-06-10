@@ -1,4 +1,4 @@
-package Medium;
+package BankingSystemBasicJava.Medium;
 
 import java.util.Date;
 

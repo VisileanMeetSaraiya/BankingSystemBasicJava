@@ -1,4 +1,4 @@
-package Medium;
+package BankingSystemBasicJava.Medium;
 
 public enum AccType {
 
