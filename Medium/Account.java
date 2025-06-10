@@ -13,10 +13,12 @@ public class Account {
     private AccType accountType = AccType.SAVINGS;
     private double amount = 0.0;
     private Date openinDate ;
+    private String password = "";
 
-    public Account(String fn, String mn, String ln, String add, int at, double amt){
+    public Account(String fn, String mn, String ln, String add, int at, double amt, String pwd){
 
         this.Id = Account.nextId++;
+        this.password = pwd;
 
         this.fName = fn;
         this.mName = mn;
@@ -43,10 +45,28 @@ public class Account {
         } catch (Exception e) {
             System.out.println("Error while asigning account type , number is not in range");
         }
+
+        System.out.println("\n\nYour account no. is ---> "+this.Id+" and password is ---> "+this.password+"\n");
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            // TODO: handle 
+            System.out.println("Timer related exception");
+        }
+
+        // try {
+            // System.out.println("Your account no. is"+this.Id+" and password is "+this.password);
+            // wait(1000);
+        // } catch (Exception e) {
+            // TODO: handle 
+            // System.out.println("Timer related exception");
+        // }
+        
     }
-    public Account(String fn, String mn, String ln, String add, int at){
+    public Account(String fn, String mn, String ln, String add, int at, String pwd){
 
         this.Id = Account.nextId++;
+        this.password = pwd;
 
         this.fName = fn;
         this.mName = mn;
@@ -72,6 +92,15 @@ public class Account {
         } catch (Exception e) {
             System.out.println("Error while asigning account type , number is not in range");
         }
+
+        System.out.println("\n\nYour account no. is ---> "+this.Id+" and password is ---> "+this.password+"\n");
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            // TODO: handle 
+            System.out.println("Timer related exception");
+        }
+        
     }
     
     @Override

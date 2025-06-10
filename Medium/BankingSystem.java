@@ -19,7 +19,7 @@ public class BankingSystem {
         stdCount = Integer.parseInt(sc.nextLine().toString());
 
         for(int i = 1;  i <= stdCount; i++){
-            String fn,mn,ln,add = "";
+            String fn,mn,ln,add,pwd = "";
             int accountType = 0;
             double amount = 0.0;
 
@@ -61,7 +61,15 @@ public class BankingSystem {
                 System.out.println("you have pressed \"enter\" so your ammount will be 0.0");
             }
 
-            Account ac = new Account(fn, mn, ln, add, accountType,amount);
+            System.out.println("\nPlease enter a password for your account for future transections\n\t\byou have to remember this for future, so pleasre note it somewhere\b");
+            String demoPwd = sc.nextLine();
+            while(demoPwd.isEmpty()){
+                System.out.println("please enter the password");
+                demoPwd = sc.nextLine();
+            }
+            pwd = demoPwd.trim();
+
+            Account ac = new Account(fn, mn, ln, add, accountType,amount,pwd);
             accounts.add(ac);
 
             if( i != stdCount)
