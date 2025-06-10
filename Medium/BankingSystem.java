@@ -5,14 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BankingSystem {
+
     static List<Account>accounts = new ArrayList<>() ;
+    static double totalBankBalance = 0.0;
+    static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
         // Account ac1 = new Account("p1", "m1", "l1", "ahem", 0);
         // Account ac2 = new Account("p2", "m2", "l2", "brc", 2, 2340);
         // accounts.add(ac1);
         // accounts.add(ac2);
 
-        Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter how many student you want to add : ");
         int stdCount = 0;
@@ -72,6 +75,9 @@ public class BankingSystem {
             Account ac = new Account(fn, mn, ln, add, accountType,amount,pwd);
             accounts.add(ac);
 
+            //updating total balance for bank -> while creating account
+            BankingSystem.totalBankBalance += amount;
+
             if( i != stdCount)
             System.out.println("\n-----------------Enter next person's details-----------------\n");
 
@@ -79,6 +85,8 @@ public class BankingSystem {
 
         System.out.println("\n-----------------List of Account holders-----------------\n");
         showAccounts();
+
+        performOperations();
 
         //closing scanner
         sc.close();
@@ -90,5 +98,58 @@ public class BankingSystem {
         }
     }
 
+    static boolean depositBalance(int accId, String password, double amount){
+        for (Account account : accounts) {
+            if( (account.getId() == accId) && account.checkPass(password)){
+                //some ops
+                if( account.addBal(amount)){
+                    System.out.println("\nCurrent Balance : "+account.getBal());
+                    return true;
+                }
+                // return true;
+            }
+        }
+        return false;
+    }
+
+    static void performOperations(){
+        while(true){
+            System.out.println("\nChoose one option from below ---> : \n");
+            System.out.println("-1  -> to quit the program");
+            System.out.println("1 -> Deposit the balance");
+            System.out.println("2 -> Withdraw the amount");
+            System.out.println("3 -> check your account balance");
+            int num = Integer.MAX_VALUE;
+            num = Integer.parseInt(sc.nextLine().trim());
+            if(num == -1)
+                break;
+            else if(num > 3 || num <-1)
+                System.out.println("Enter valid option");
+            else{
+                int uid = -1;
+                String upwd = "";
+                double uamt = -100;
+
+                System.out.println("Enter your account number :");
+                uid = Integer.parseInt(sc.nextLine().trim());
+                System.out.println("Enter your Password :");
+                upwd = sc.nextLine().trim();
+                System.out.println("Enter amount for transection :");
+                uamt =  Double.parseDouble(sc.nextLine().trim());
+
+
+                switch (num) {
+            
+                case 1:
+                    depositBalance(uid, upwd, uamt);
+                    break;
+            
+                default:
+                    break;
+            }
+
+        }
+    }
+    }
 }
 
