@@ -136,4 +136,25 @@ public class Account {
         return this.amount;
     }
 
+    public int getId(){
+        return this.Id;
+    }
+
+    public double getBal()
+    {
+        return this.amount;
+    }
+    
+    public boolean checkPass(String passwordToCheck){
+        return passwordToCheck.equals(this.password);
+    }
+
+    public boolean addBal(double bal){
+        if(bal <= 0){
+            System.out.println("Enter valid balance");
+            return false;
+        }
+        this.amount += bal;
+        return true;
+    }
 }
