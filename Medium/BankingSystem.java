@@ -19,7 +19,7 @@ public class BankingSystem {
 
         System.out.println("Enter how many student you want to add : ");
         int stdCount = 0;
-        stdCount = Integer.parseInt(sc.nextLine().toString());
+        stdCount = Integer.parseInt(sc.nextLine().trim().toString());
 
         for(int i = 1;  i <= stdCount; i++){
             String fn,mn,ln,add,pwd = "";
@@ -112,13 +112,17 @@ public class BankingSystem {
         return false;
     }
 
+    static void showBanksTotalBalance(){
+        System.out.println("\nTotal balance of Bank is "+ totalBankBalance);
+    }
+
     static void performOperations(){
         while(true){
             System.out.println("\nChoose one option from below ---> : \n");
             System.out.println("-1  -> to quit the program");
-            System.out.println("1 -> Deposit the balance");
-            System.out.println("2 -> Withdraw the amount");
-            System.out.println("3 -> check your account balance");
+            System.out.println(" 1  -> Deposit the balance");
+            System.out.println(" 2  -> Withdraw the amount");
+            System.out.println(" 3  -> check your account balance");
             int num = Integer.MAX_VALUE;
             num = Integer.parseInt(sc.nextLine().trim());
             if(num == -1)
