@@ -114,7 +114,9 @@ public class Account {
            "Account Type: " + accountType + "\n" +
            "Amount: " + amount + "\n" +
            "Opening Date: " + (openinDate != null ? openinDate.toString() : "Not Set")+ "\n\n";
-    }public int getId(){
+    }
+    
+    public int getId(){
         return this.Id;
     }
 
