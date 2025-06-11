@@ -115,5 +115,25 @@ public class Account {
            "Amount: " + amount + "\n" +
            "Opening Date: " + (openinDate != null ? openinDate.toString() : "Not Set")+ "\n\n";
     }
+    public int getId() {
+        // TODO Auto-generated method stub
+        return this.Id;
+        // throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    }
+    public boolean checkPass(String password2) {
+        // TODO Auto-generated method stub
+        return password2.equals(this.password);
+    }
+    public boolean addBal(double amount2) {
+        if(amount2 <= 0){
+            System.out.println("Enter valid amount for deposit");
+            return false;
+        }
+        this.amount += amount2;
+        return true;
+    }
+    public double getBal() {
+        return this.amount;
+    }
 
 }
